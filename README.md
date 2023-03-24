@@ -18,6 +18,23 @@ The following table outlines the various stakeholders and their roles within the
 
 Each network has a dedicated Gnosis Safe multisig pause guardian that can be used to execute pause functionality or modify configurations to minimize risk.
 
+The multisig configuration can be copied to a new chain using the script ```create-safe-copy.js``` script provided by OpenZeppelin in the defender-multisig-setup/ folder of the [Compound Cross Chain Pause Demo](https://github.com/OpenZeppelin/compound-cross-chain-pause-demo/tree/main/defender-multisig-setup) project.
+
+Threshold: 4/6
+Signers: Gauntlet, Compound Labs, Community Members
+
+Once a safe has been copied to a new chain, the safe signers will perform a signing ceremony to ensure that all users are able to sign transactions. The transaction should not be executed until all 6 signers have signed the transaction. Ideally, the transaction will execute a restricted function on the Comet contract, however this is not a strict requirement as this can be tested separately later.
+
+### Signing Process
+
+Multisig Owners are expected to sign the transaction within 30 minutes of it being proposed.
+
+ 1. One signer creates the transaction and signs it
+ 2. Two more signers sign the transaction
+ 3. When prepared to execute, one last signer signs and executes the transaction
+
+Gas fees for executing the transaction can be paid with funds from the operator faucet by executing the transaction through the operator faucet relayer in Defender. For this, the execution strategy for the relayer should be set to 
+
 ## Responsibilities
 
 ### Risk Management Guidance
@@ -64,29 +81,3 @@ Once a pause is in place, it can only be unpaused by a community governance prop
 **Owner:** Compound Labs
 
 Develop and test contract upgrades. In addition, OpenZeppelin will provide guidance on mitigating security issues and perform audits on contract upgrades intended to resolve security concerns.
-
-## Pause Guardian Use Cases
-
-### Stablecoin Depeg
-
-**Condition:** Stablecoin depegs to below 90% of its intended value AND the price of the asset is hardcoded.
-
-**Actions:** 
- 1. Pause borrowing. If desired, a pause can be executed by modifying the borrow caps instead of an explicit pause on borrowing.
-
-### Invalid Price Feed
-
-**Condition:** A price feed is either inaccessible or incorrect.
-
-**Action:** 
- 1. Pause liquiditations, if necessary
-
-### Arbitrary Contract Bug
-
-**Condition:** There is a wide variance in the type of potential contract bug and which parts of the protocol they affect.
-
-**Actions:** 
- 1. Execute a pause for the affected functionality. 
- 2. Develop and audit a fixed contract version
- 3. Submit a proposal for the upgraded contract, including an unpause in the proposal.
- 4. Cancel any pending non-critical proposals
