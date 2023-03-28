@@ -6,13 +6,15 @@ This respository is intended to define the various, roles, responsibilities, and
 
 The following table outlines the various stakeholders and their roles within the Compound Finance ecosystem. Note: the stakeholder groups are not mutually exclusive.
 
-| Group            | Primary Role Within Compound    |
-| ---------------- | ------------------------------- |
-| Compound Labs    | Operations and Development      |
-| OpenZeppelin     | Security Services               |
-| Gauntlet         | Risk Management                 |
-| Multisig Members | Contract Administrative Actions |
-| Community        | Governance                      |
+| Group                    | Primary Role Within Compound    |
+| ------------------------ | ------------------------------- |
+| Protocol Contributors    | Operations and Development      |
+| OpenZeppelin             | Security Services               |
+| Gauntlet                 | Risk Management                 |
+| Multisig Members         | Contract Administrative Actions |
+| Community                | Governance                      |
+
+Protocol contributors includes Compound Labs, community members, and other parties invested in the operations and development of Compound.
 
 ## Assets
 
@@ -21,7 +23,7 @@ Each network has a dedicated Gnosis Safe multisig pause guardian that can be use
 The multisig configuration can be copied to a new chain using the script ```create-safe-copy.js``` script provided by OpenZeppelin in the defender-multisig-setup/ folder of the [Compound Cross Chain Pause Demo](https://github.com/OpenZeppelin/compound-cross-chain-pause-demo/tree/main/defender-multisig-setup) project.
 
 Threshold: 4/6
-Signers: Gauntlet, Compound Labs, Community Members
+Signers: Gauntlet, Protocol Contributors, Community Members
 
 Once a safe has been copied to a new chain, the safe signers will perform a signing ceremony to ensure that all users are able to sign transactions. The transaction should not be executed until all 6 signers have signed the transaction. Ideally, the transaction will execute a restricted function on the Comet contract, however this is not a strict requirement as this can be tested separately later.
 
@@ -60,9 +62,9 @@ For all of the above, Gauntlet should also advise on risk mitigation actions, sp
 
 ### Audits
 
-**Owner:** Compound Labs and OpenZeppelin
+**Owner:** Community, Protocol Contributors, and OpenZeppelin
 
-Compound Labs will ensure that all contracts are audited prior to deployoment. OpenZeppelin will typically take the lead in performing audits, however, Compound Labs or the community may choose to get additional audits independent of OpenZeppelin.
+Protocol Contributors and the community will ensure that all contracts are audited prior to deployoment. OpenZeppelin will typically take the lead in performing audits, however, the community may choose to get additional audits independent of OpenZeppelin.
 
 ### Pause
 
@@ -78,6 +80,7 @@ Once a pause is in place, it can only be unpaused by a community governance prop
 
 ### Contract Upgrades
 
-**Owner:** Compound Labs
+**Owner:** Protocol Contributors
 
 Develop and test contract upgrades. In addition, OpenZeppelin will provide guidance on mitigating security issues and perform audits on contract upgrades intended to resolve security concerns.
+
