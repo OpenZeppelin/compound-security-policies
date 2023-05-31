@@ -76,7 +76,9 @@ Signers for the multisig of a particular chain are responsible for initiating pa
 
 **Owner:** Community
 
-Once a pause is in place, it can only be unpaused by a community governance proposal by the DAO and therefore is subject to the 7 day governance process.
+In v2, once a pause is in place, it can only be unpaused by a community governance proposal by the DAO and therefore is subject to the 7 day governance process.
+
+In v3, the pause guardian multisig can directly unpause without going through a governance proposal.
 
 ### Contract Upgrades
 
