@@ -27,8 +27,6 @@ Protocol contributors includes Compound Labs, community members, and other parti
 | Jared F.           | 0xF515DCb89e67bb5D52b857d11f6C0cC2aD7D0167 |
 | TennisBowling      | 0xC3AaE58Ab81663872dd36d73613eb295b167F546 |
 
-
-
 ## Assets
 
 Each network has a dedicated Gnosis Safe multisig pause guardian that can be used to execute pause functionality or modify configurations to minimize risk.
